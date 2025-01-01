@@ -9,7 +9,9 @@ const Login = () => {
   const [emailId, setEmailId]= useState("ankit@gmail.com");
   const [password, setPassword]= useState("Ankit@123");
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+
   const handleLogin = async()=>{
     try{
       const user = await axios.post(BASE_URL+"/login",{
@@ -21,7 +23,9 @@ const Login = () => {
     dispatch(addUser(user.data));
     navigate("/");
     }catch(err){
-      console.error(err);
+      setError(err.response.data);
+      console.log(err);
+      
     }
   }
   
@@ -56,6 +60,7 @@ const Login = () => {
                             required
                         />
                     </div>
+                    <p className="text-red-600 font-bold">{error}</p>
                     <button 
                         type="submit"
                         onClick={handleLogin} 
