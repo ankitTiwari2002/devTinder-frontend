@@ -5,7 +5,7 @@ import { BASE_URL } from "../utils/constants";
 import { removeUser } from "../utils/userSlice";
 
 const NavBar = () => {
-  const user= useSelector((store)=>store.user);
+  const user= useSelector(store=>store.user);
   const photourl = user?.photourl || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp";
   const navigate = useNavigate();
   const dispatch = useDispatch();

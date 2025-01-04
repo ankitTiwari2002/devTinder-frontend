@@ -3,7 +3,7 @@ const FeedCard = ({user}) => {
     return (
         <div className="bg-gray-800 text-white rounded-lg shadow-lg overflow-hidden max-w-sm w-full">
             {/* Image Section */}
-            <div className="h-64 w-full bg-cover bg-center" style={{ backgroundImage: `url(${photourl})` }}></div>
+            <div className="h-1/2 w-full bg-cover bg-center" style={{ backgroundImage: `url(${photourl})` }}></div>
 
             {/* Content Section */}
             <div className="p-4">

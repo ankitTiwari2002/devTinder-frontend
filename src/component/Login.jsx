@@ -19,7 +19,6 @@ const Login = () => {
         password,
       },{withCredentials: true}
     )
-    console.log(user);
     dispatch(addUser(user.data));
     navigate("/");
     }catch(err){
