@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { removeFeed } from "../utils/feedSlice";
 
 const FeedCard = ({ user }) => {
-  const { _id, photourl, firstName, gender, age, about } = user;
+  const { _id, photourl, firstName, gender, age, about, lastName } = user;
   const dispatch = useDispatch();
 
   const handleButton = async (status, userId) => {
@@ -31,7 +31,7 @@ const FeedCard = ({ user }) => {
       {/* Content Section */}
       <div className="p-4">
         <h2 className="text-2xl font-bold">
-          {firstName}, {age}
+          {firstName + " " + lastName}, {age}
         </h2>
         <p className="text-sm text-gray-400 capitalize">{gender}</p>
 
