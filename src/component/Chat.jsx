@@ -1,12 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaSmile, FaPaperPlane, FaEllipsisV } from "react-icons/fa";
 import { useParams } from "react-router-dom";
+import { createSocketConnection } from "../utils/socket";
+import { useSelector } from "react-redux";
 
 const Chat = () => {
   const { targetUserId } = useParams();
+  const user = useSelector((store) => store.user);
+  const userId = user?._id;
   const [messages, setMessages] = useState([
     { text: "Hey there! How are you doing today? 😊" },
   ]);
+
+  useEffect(() => {
+    const socket = createSocketConnection();
+    socket.emit("joinChat", { userId, targetUserId });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
   return (
     <div className="bg-gray-900 h-screen flex flex-col">
       {/* Header */}
